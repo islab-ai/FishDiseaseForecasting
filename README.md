@@ -31,7 +31,7 @@ Sparsity한 self-attention은 active queries가 "head score"에 있고 lazy quer
 ## Task
 :triangular_flag_on_post: Binary Classification task 
 장기 시계열 예측을 수행하는 `Informer` 모델의 출력단에 `Sigmoid` 모듈을 추가하여, 특정 날 질병의 발생 유무를 판단하는 Binary Classification task. 
-d
+
 ## Training
 Binary Classification task이므로 `Loss`는 `BCELoss`를 사용한다. 학습 `epoch`은 `10`으로 돌리는데, epoch을 더 크게 하더라도 `EarlyStopping`으로 10에서 학습을 종료한다. 조금 더 섬세한 학습을 위해 `learning_rate`를 `1e-5`로 변경하여 최종 학습하였다. `Batch_size`는 `64`로, 이렇게 `Hyper-parameter`를 구성했을 때 가장 좋은 결과가 나온다. 
 
