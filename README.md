@@ -3,10 +3,10 @@
 
 
 # Informer 기반의 사육관리 질병 예측 모델
-
-## 모델 아키텍처
 :triangular_flag_on_post: Original Informer GitHub 주소: https://github.com/zhouhaoyi/Informer2020.git
 
+
+## 모델 아키텍처
 Informer 기반의 사육관리 질병 예측 모델은 양식장 수질환경, 사육관리, 질병진단 기록을 활용하여 시간의 흐름에 따라 수조별 질병 발생 가능성을 예측하는 모델이다. 입력으로 들어가는 features를 보고, 다음날 질병의 유무를 판단하는 Binary Classification task이다. 따라서 기본 Informer 모델에서 decoder의 출력 다음의 fully connected layer에 sigmoid 모듈을 추가하여 질병의 유무를 판단할 수 있도록 모델을 설계했다.
 
 
