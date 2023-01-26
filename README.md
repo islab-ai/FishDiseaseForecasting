@@ -1,3 +1,7 @@
+ SPDX-FileCopyrightText: © 2023 ISLAB-AI <islab.aiteam@gmail.com>
+ < SPDX-License-Identifier: MIT
+
+
 # Informer 기반의 사육관리 질병 예측 모델
 :triangular_flag_on_post: Original Informer GitHub 주소: https://github.com/zhouhaoyi/Informer2020.git
 
@@ -14,6 +18,44 @@ Informer 기반의 사육관리 질병 예측 모델은 양식장 수질환경, 
 ## ProbSparse Attention 
 Sparsity한 self-attention은 active queries가 "head score"에 있고 lazy queries 즉, 영향력이 낮은 queries가 "tail area"에 있는 꼬리가 긴 분포(long tail distribution)를 가진다. 영향력이 낮은 lazy queries가 아닌 active queries를 선택하도록 ProbSparse Attention을 설계하였다. 확률 분포로 중요한 queires를 구분해내어 상위 u개(Top-u)의 queries를 사용한다. ProbSparse Attention은 sparsity 측정 지표를 바탕으로 유의미한 query를 Top-u개만 선택하여 attention을 계산하는 방법 
 
+
+## Input
+- Encoder의 Input: `[index, seq_len]` 
+- Decoder의 Input: `[seq_len - label_len : seq_len + pred_len]` 
+- Decoder는 encoder의 정보를 label_len 길이만큼 참고하여 pred_len을 추론
+
+## Output
+- Output: `c_out`크기의 출력이 나옴(`c_out=1`) 
+- 최종적으로 Sigmoid를 거치기 때문에 1 또는 0이 output으로 출력 
+
+## task
+:triangular_flag_on_post: Binary Classification task 
+장기 시계열 예측을 수행하는 `Informer` 모델의 출력단에 `Sigmoid` 모듈을 추가하여, 특정 날 질병의 발생 유무를 판단하는 Binary Classification task. 
+
+## Training
+Binary Classification task이므로 `Loss`는 `BCELoss`를 사용한다. 학습 `epoch`은 `10`으로 돌리는데, epoch을 더 크게 하더라도 `EarlyStopping`으로 10에서 학습을 종료한다. 조금 더 섬세한 학습을 위해 `learning_rate`를 `1e-5`로 변경하여 최종 학습하였다. `Batch_size`는 `64`로, 이렇게 `Hyper-parameter`를 구성했을 때 가장 좋은 결과가 나왔다.  
+
+- BCELoss: `Binary Cross Entropy Loss`
+- Adam Optimizer 
+- epochs : `10`
+- learning_rate: `1e-5`
+- batch_size : `64`
+
+## Evaluation metric
+모델 성능평가 척도로는 `F1-Score`를 사용한다. 데이터 질병의 유무가 불균형한 데이터이기 때문에 `F1-Score`로 측정을 하는 것이 좋다. Binary Classification이므로 `pytorch`의 `BinaryF1Score()`를 사용하여 모델을 평가하였다. 
+
+<p align="center">
+<img src="./img/confusion_matrix.png" height="200" alt="" align=center />
+<br><br>
+<b>Figure 2.</b> Confusion matrix.
+</p>
+
+
+<p align="center">
+<img src="./img/f1_score.png" height="100" alt="" align=center />
+<br><br>
+<b>Figure 3.</b> F1-Score.
+</p>
 
 ## Requirements
 
@@ -38,12 +80,13 @@ pip install -r requirements.txt
 데이터: TS_Flatfish.csv
 데이터의 위치: `dataset/` 폴더
 수조 번호, 측정 일자, 측정 일자에 대한 온도, 습도 등을 기록한 사육환경 센서데이터(`dataset/sensor_data.json`)와 특정 질병 증상을 보이는 넙치 개체에게 사료와 양, 항생제를 먹인 날짜와 종류, 양 등을 기록한 사육 관리 데이터(`dataset/Fish Disease Daily Report.json`)를 일별 기준으로 병합하여 csv 포맷으로 만든 일일 데이터(`dataset/TS_Flatfish.csv`)
+- 3353 rows x 13 columns 
 
 
 <p align="center">
 <img src="./img/data.png" height="170" alt="" align=center />
 <br><br>
-<b>Figure 2.</b> An example of the TimeSeries Fish Disease data.
+<b>Figure 4.</b> An example of the TimeSeries Fish Disease data.
 </p>
 
 
@@ -93,5 +136,5 @@ The detailed descriptions about the arguments are as following:
 <p align="center">
 <img src="./img/result.png" height = "100" alt="" align=center />
 <br><br>
-<b>Figure 3.</b> Timeseries binary classification.
+<b>Figure 5.</b> Timeseries binary classification.
 </p>
