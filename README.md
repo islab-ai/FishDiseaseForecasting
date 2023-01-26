@@ -1,6 +1,14 @@
 # Informer 기반의 사육관리 질병 예측 모델
-Original Informer GitHub 주소: https://github.com/zhouhaoyi/Informer2020.git
+:triangular_flag_on_post: Original Informer GitHub 주소: https://github.com/zhouhaoyi/Informer2020.git
+
 Informer 기반의 사육관리 질병 예측 모델은 양식장 수질환경, 사육관리, 질병진단 기록을 활용하여 시간의 흐름에 따라 수조별 질병 발생 가능성을 예측하는 모델이다. 입력으로 들어가는 features를 보고, 다음날 질병의 유무를 판단하기 때문에 이중 분류 task라고 볼 수 있다. 따라서 기본 Informer 모델에서 decoder의 출력 다음의 fully connected layer에 sigmoid 모듈을 추가하여 질병의 유무를 판단할 수 있도록 모델을 새로 설계했다. 또한, 이중 분류이기 때문에 loss를 BCE(Binary Cross Entropy)로 바꾸고 BinaryF1Score를 사용하여 모델의 성능을 측정하였다.
+
+
+<p align="center">
+<img src="./img/model.png" height = "100" alt="" align=center />
+<br><br>
+<b>Figure 1.</b> The architecture of model.
+</p>
 
 
 ## ProbSparse Attention 
@@ -43,7 +51,7 @@ python -u main_informer.py --purpose train --model informer --data TS_Flatfish
 
 # Test
 python -u main_informer.py --purpose test --model informer --data TS_Flatfish
-
+```
 
 The detailed descriptions about the arguments are as following:
 
@@ -67,7 +75,15 @@ The detailed descriptions about the arguments are as following:
 | train_epochs | 학습 에폭 (defaults to 10) |
 | batch_size | 학습 데이터의 배치 크기 (defaults to 64) |
 | patience | Early stopping patience (defaults to 4) |
-| use_gpu | Whether to use gpu (defaults to `True`) |
-| gpu | The gpu no, used for training and inference (defaults to 0) |
-| use_multi_gpu | Whether to use multiple gpus, using this argument means using mulitple gpus (defaults to `False`) |
+| use_gpu | gpu 사용 여부 (defaults to `True`) |
+| gpu | 학습과 추론에 사용할 gpu (defaults to 0) |
+| use_multi_gpu | multi-gpu 사용 여부 (defaults to `False`) |
 | devices | Device ids of multile gpus (defaults to `0,1,2,3`) |
+
+## Result
+
+<p align="center">
+<img src="./img/result.png" height = "100" alt="" align=center />
+<br><br>
+<b>Figure 2.</b> Timeseries binary classification.
+</p>
