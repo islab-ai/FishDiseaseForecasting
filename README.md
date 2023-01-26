@@ -44,18 +44,20 @@ Binary Classification task이므로 `Loss`는 `BCELoss`를 사용한다. 학습 
 ## Evaluation metric
 모델 성능평가 척도로는 `F1-Score`를 사용한다. 데이터 질병의 유무가 불균형한 데이터이기 때문에 `F1-Score`로 측정을 하는 것이 좋다. Binary Classification이므로 `pytorch`의 `BinaryF1Score()`를 사용하여 모델을 평가하였다. 
 
+
 <p align="center">
-<img src="./img/confusion_matrix.png" height="200" alt="" align=center />
+<img src="./img/confusion_matrix.png" alt="" align=center />
 <br><br>
 <b>Figure 2.</b> Confusion matrix.
 </p>
 
 
 <p align="center">
-<img src="./img/f1_score.png" height="100" alt="" align=center />
+<img src="./img/f1_score.png" height="90" alt="" align=center />
 <br><br>
 <b>Figure 3.</b> F1-Score.
 </p>
+
 
 ## Requirements
 
