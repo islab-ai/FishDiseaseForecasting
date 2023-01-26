@@ -53,7 +53,7 @@ Binary Classification task이므로 `Loss`는 `BCELoss`를 사용한다. 학습 
 
 
 <p align="center">
-<img src="./img/f1_score.png" height="90" alt="" align=center />
+<img src="./img/f1_score.png" height="50" alt="" align=center />
 <br><br>
 <b>Figure 3.</b> F1-Score.
 </p>
