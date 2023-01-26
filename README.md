@@ -137,9 +137,12 @@ The detailed descriptions about the arguments are as following:
 | devices | Device ids of multile gpus (defaults to `0,1,2,3`) |
 
 ## Result
+:triangular_flag_on_post: 목표 성능: `f1-score 90% 이상`
+:triangular_flag_on_post: 최종 성능: `f1-score 95%`
+
 
 <p align="center">
-<img src="./img/result.png" height = "100" alt="" align=center />
+<img src="./img/result.png" alt="" align=center />
 <br><br>
 <b>Figure 5.</b> Timeseries binary classification.
 </p>
