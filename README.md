@@ -40,6 +40,13 @@ pip install -r requirements.txt
 수조 번호, 측정 일자, 측정 일자에 대한 온도, 습도 등을 기록한 사육환경 센서데이터(`dataset/sensor_data.json`)와 특정 질병 증상을 보이는 넙치 개체에게 사료와 양, 항생제를 먹인 날짜와 종류, 양 등을 기록한 사육 관리 데이터(`dataset/Fish Disease Daily Report.json`)를 일별 기준으로 병합하여 csv 포맷으로 만든 일일 데이터(`dataset/TS_Flatfish.csv`)
 
 
+<p align="center">
+<img src="./img/data.png" height="170" alt="" align=center />
+<br><br>
+<b>Figure 2.</b> An example of the TimeSeries Fish Disease data.
+</p>
+
+
 ## 모델 가중치 저장 폴더
 `./checkpoints/informer_TS_Flatfish_ftMS_sl7_ll4_pl1` 아래 checkpoint.pth로 저장
 
@@ -86,5 +93,5 @@ The detailed descriptions about the arguments are as following:
 <p align="center">
 <img src="./img/result.png" height = "100" alt="" align=center />
 <br><br>
-<b>Figure 2.</b> Timeseries binary classification.
+<b>Figure 3.</b> Timeseries binary classification.
 </p>
