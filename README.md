@@ -46,7 +46,7 @@ Binary Classification task이므로 `Loss`는 `BCELoss`를 사용한다. 학습 
 
 
 <p align="center">
-<img src="./img/confusion_matrix.jpg" width="250" alt="" align=center />
+<img src="./img/confusion_matrix.jpg" width="400" alt="" align=center />
 <br><br>
 <b>Figure 2.</b> Confusion matrix.
 </p>
