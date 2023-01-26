@@ -5,7 +5,7 @@ Informer 기반의 사육관리 질병 예측 모델은 양식장 수질환경, 
 
 
 <p align="center">
-<img src="./img/model.png" height = "100" alt="" align=center />
+<img src="./img/model.png" alt="" align=center />
 <br><br>
 <b>Figure 1.</b> The architecture of model.
 </p>
