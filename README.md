@@ -33,7 +33,7 @@ Sparsity한 self-attention은 active queries가 "head score"에 있고 lazy quer
 장기 시계열 예측을 수행하는 `Informer` 모델의 출력단에 `Sigmoid` 모듈을 추가하여, 특정 날 질병의 발생 유무를 판단하는 Binary Classification task. 
 
 ## Training
-Binary Classification task이므로 `Loss`는 `BCELoss`를 사용한다. 학습 `epoch`은 `10`으로 돌리는데, epoch을 더 크게 하더라도 `EarlyStopping`으로 10에서 학습을 종료한다. 조금 더 섬세한 학습을 위해 `learning_rate`를 `1e-5`로 변경하여 최종 학습하였다. `Batch_size`는 `64`로, 이렇게 `Hyper-parameter`를 구성했을 때 가장 좋은 결과가 나왔다.  
+Binary Classification task이므로 `Loss`는 `BCELoss`를 사용한다. 학습 `epoch`은 `10`으로 돌리는데, epoch을 더 크게 하더라도 `EarlyStopping`으로 10에서 학습을 종료한다. 조금 더 섬세한 학습을 위해 `learning_rate`를 `1e-5`로 변경하여 최종 학습하였다. `Batch_size`는 `64`로, 이렇게 `Hyper-parameter`를 구성했을 때 가장 좋은 결과가 나온다. 
 
 - BCELoss: `Binary Cross Entropy Loss`
 - Adam Optimizer 
@@ -83,6 +83,9 @@ pip install -r requirements.txt
 데이터의 위치: `dataset/` 폴더
 수조 번호, 측정 일자, 측정 일자에 대한 온도, 습도 등을 기록한 사육환경 센서데이터(`dataset/sensor_data.json`)와 특정 질병 증상을 보이는 넙치 개체에게 사료와 양, 항생제를 먹인 날짜와 종류, 양 등을 기록한 사육 관리 데이터(`dataset/Fish Disease Daily Report.json`)를 일별 기준으로 병합하여 csv 포맷으로 만든 일일 데이터(`dataset/TS_Flatfish.csv`)
 - 3353 rows x 13 columns 
+- `train data`: 2340
+- `valid data`: 336
+- `test data`: 670
 
 
 <p align="center">
