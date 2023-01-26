@@ -7,7 +7,7 @@
 
 
 ## 모델 아키텍처
-Informer 기반의 사육관리 질병 예측 모델은 양식장 수질환경, 사육관리, 질병진단 기록을 활용하여 시간의 흐름에 따라 수조별 질병 발생 가능성을 예측하는 모델이다. 입력으로 들어가는 features를 보고, 다음날 질병의 유무를 판단하는 Binary Classification task이다. 따라서 기본 Informer 모델에서 decoder의 출력 다음의 fully connected layer에 sigmoid 모듈을 추가하여 질병의 유무를 판단할 수 있도록 모델을 설계다.
+Informer 기반의 사육관리 질병 예측 모델은 양식장 수질환경, 사육관리, 질병진단 기록을 활용하여 시간의 흐름에 따라 수조별 질병 발생 가능성을 예측하는 모델이다. 입력으로 들어가는 features를 보고, 다음날 질병의 유무를 판단하는 Binary Classification task이다. 따라서 기본 Informer 모델에서 decoder의 출력 다음의 fully connected layer에 sigmoid 모듈을 추가하여 질병의 유무를 판단할 수 있도록 모델을 설계하였다.
 
 
 <p align="center">
@@ -21,7 +21,7 @@ Informer 기반의 사육관리 질병 예측 모델은 양식장 수질환경, 
 Informer는 ProbSparse Attention을 활용하여 다음 시점을 예측한다. ProbSparse Attention은 Sparsity한 self-attention로, active queries가 "head score"에 있고 lazy queries 즉, 영향력이 낮은 queries가 "tail area"에 있는 꼬리가 긴 분포(long tail distribution)를 가진다. Informer 논문의 저자들은 영향력이 낮은 lazy queries가 아닌 active queries를 선택하도록 ProbSparse Attention을 설계하였다. ProbSparse Attention은 sparsity 측정 지표를 바탕으로 중요한 queires를 구분해내어 상위 u개(Top-u)의 queries를 사용하여 attention을 계산하는 방법이다.
 
 
-## Input
+## Input 
 - Encoder의 Input: `[index, seq_len]` 
 - Decoder의 Input: `[seq_len - label_len : seq_len + pred_len]` 
 - Decoder는 encoder의 정보를 label_len 길이만큼 참고하여 pred_len을 추론
