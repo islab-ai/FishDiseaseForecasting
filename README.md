@@ -83,7 +83,10 @@ Binary Classification task이므로 `Loss`는 `BCELoss`를 사용한다. 학습 
 `./checkpoints/informer_TS_Flatfish_ftMS_sl7_ll4_pl1` 아래 checkpoint.pth로 저장
 
 
-## Requirements
+
+
+## Usage
+### Requirements
 
 - Python 3.9.12
 - pandas == 1.5.2
@@ -100,8 +103,7 @@ Dependencies can be installed using the following command:
 pip install -r requirements.txt
 ```
 
-
-## Usage
+### Command
 
 ```bash
 # Train
