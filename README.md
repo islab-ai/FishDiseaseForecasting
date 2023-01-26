@@ -28,7 +28,7 @@ Sparsity한 self-attention은 active queries가 "head score"에 있고 lazy quer
 - Output: `c_out`크기의 출력이 나옴(`c_out=1`) 
 - 최종적으로 Sigmoid를 거치기 때문에 1 또는 0이 output으로 출력 
 
-## task
+## ask
 :triangular_flag_on_post: Binary Classification task 
 장기 시계열 예측을 수행하는 `Informer` 모델의 출력단에 `Sigmoid` 모듈을 추가하여, 특정 날 질병의 발생 유무를 판단하는 Binary Classification task. 
 
