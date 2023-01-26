@@ -26,6 +26,7 @@ Sparsity한 self-attention은 active queries가 "head score"에 있고 lazy quer
 - seaborn == 0.12.2
 - scikit_learn == 1.2.0
 
+
 Dependencies can be installed using the following command:
 ```bash
 pip install -r requirements.txt
