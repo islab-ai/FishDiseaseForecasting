@@ -1,6 +1,3 @@
- SPDX-FileCopyrightText: © 2023 ISLAB-AI <islab.aiteam@gmail.com>
- < SPDX-License-Identifier: MIT
-
 
 # Informer 기반의 사육관리 질병 예측 모델
 :triangular_flag_on_post: Original Informer GitHub 주소: https://github.com/zhouhaoyi/Informer2020.git
@@ -151,3 +148,9 @@ The detailed descriptions about the arguments are as following:
 <br><br>
 <b>Figure 5.</b> Timeseries binary classification.
 </p>
+
+
+ SPDX-FileCopyrightText: © 2023 ISLAB-AI <islab.aiteam@gmail.com>
+ 
+ SPDX-License-Identifier: MIT
+
