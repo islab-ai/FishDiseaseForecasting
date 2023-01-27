@@ -150,7 +150,6 @@ The detailed descriptions about the arguments are as following:
 </p>
 
 
- SPDX-FileCopyrightText: © 2023 ISLAB-AI <islab.aiteam@gmail.com>
- 
+ SPDX-FileCopyrightText: © 2023 ISLAB-AI <islab.aiteam@gmail.com><br>
  SPDX-License-Identifier: MIT
 
