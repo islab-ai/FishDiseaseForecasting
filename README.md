@@ -104,8 +104,13 @@ pip install -r requirements.txt
 ```
 
 ### Command
+`data/generate_data.py`: `dataset/` 폴더 아래에 있는 두 `json`파일(`Fish Disease Daily Report.json`, `sensor_data.json`)을 정제 및 전처리, 병합하여 csv 포맷으로 저장하는 코드(최종 데이터세트: `dataset/TS_Flatfish.csv`)<br>
+해당 코드를 실행하면 `dataset/`폴더에 자동으로 저장
 
 ```bash
+# Generate data
+python data/generate_data.py 
+
 # Train
 python -u main_informer.py --purpose train --model informer --data TS_Flatfish
 
